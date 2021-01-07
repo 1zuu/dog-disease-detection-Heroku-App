@@ -1,1 +1,1 @@
-# dog-disease-detection with CNN
+# dog-disease-detection with DNN
