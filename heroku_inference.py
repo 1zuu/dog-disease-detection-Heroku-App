@@ -44,7 +44,7 @@ def get_precautions(disease):
     disease = disease.strip().lower()
     df = pd.read_csv(precausion_path)
     df_cols = df.columns.values
-    df[df_cols] = df[df_cols].str.lower()
+    df[df_cols[0]] = df[df_cols[0]].str.lower()
     row = df.loc[df[df_cols[0]] == disease].values[0][1:]
     return row
     
