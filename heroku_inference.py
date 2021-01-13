@@ -45,7 +45,7 @@ def get_precautions(disease):
     df = pd.read_csv(precausion_path)
     df_cols = df.columns.values
     df[df_cols[0]] = df[df_cols[0]].str.lower()
-    row = df.loc[df[df_cols[0]] == disease].values[0][1:]
+    row = df.loc[df[df_cols[0]] == disease].values[0][1:].values
     return row
     
 def predict_precautions(symtoms, all_diseases, all_symtoms):
@@ -55,5 +55,5 @@ def predict_precautions(symtoms, all_diseases, all_symtoms):
     label = P.argmax(axis=-1)[0]
     disease = all_diseases[label]
     precausions = get_precautions(disease)
-    precausions = {'precausion'+str(i): precausion for (i,precausion) in enumerate(precausions) if not np.isnan(precausion)}    
+    precausions = {'precausion'+str(i): precausion for (i,precausion) in enumerate(precausions) if not pd.isnull(precausion)}    
     return precausions, disease
