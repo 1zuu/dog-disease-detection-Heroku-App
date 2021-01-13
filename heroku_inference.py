@@ -55,5 +55,5 @@ def predict_precautions(symtoms, all_diseases, all_symtoms):
     label = P.argmax(axis=-1)[0]
     disease = all_diseases[label]
     precausions = get_precautions(disease)
-    precausions = {'precausion'+str(i): precausion for (i,precausion) in enumerate(precausions)}    
+    precausions = {'precausion'+str(i): precausion for (i,precausion) in enumerate(precausions) if not np.isnan(precausion)}    
     return precausions, disease
